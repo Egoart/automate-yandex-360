@@ -1,0 +1,3 @@
+The small Python project that is intended to automate email creation, updating and recording user's profiles on Yandex 360 platform. 
+Profiles are created based on user's personal info obtained either via manual data entry or from Excel file contained strucutred user's data. Emails can be genereated in two ways: manualy (arbitrary email name) and automatically (based on user first and last names using transliteration from сyrillic to latin).
+Upon new profile creation the list of all excisting profiles is generated and placed in separate Excel file. The person who is initiated profile creation recieves an email message containing credentials for new profile.   
