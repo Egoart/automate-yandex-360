@@ -8,7 +8,7 @@ from create_users_list import fetch_depatments
 from create_login import generate_named_login
 from validations import format_phone_number
 from validations import handle_dept_input
-from validations import handle_initiator_email
+from validations import handle_email
 from validations import handle_input_options
 from validations import handle_login
 from validations import handle_phone_input
@@ -52,7 +52,7 @@ def handle_data_file():
 
 
 def handle_user_data():
-    initiator_email = handle_initiator_email("Введите email заявителя: ")
+    initiator_email = handle_email("Введите email заявителя: ")
     user_inputs = {
         "last_name": "Введите фамилию сотрудника: ",
         "first_name": "Введите имя: ",

@@ -23,22 +23,10 @@ def check_latin(name: str) -> bool:
     return evaluation_result
 
 
-def check_phone_number(phone: str) -> bool:
-    pattern = "^\+[3][7][5]\d{9}"
-    try:
-        evaluation_result = bool(re.search(pattern, phone))
-        if not evaluation_result:
-            raise ValueError
-    except ValueError:
-        print("Требуется ввести номер в формате +375 ХХ ХХХ ХХ ХХ")
-    return evaluation_result
-
-
 def check_email(email: str) -> bool:
     pattern = "^\S+@\S+\.\S+$"
     try:
         evaluation_result = bool(re.fullmatch(pattern, email))
-        print(evaluation_result)
         if not evaluation_result:
             raise ValueError
     except ValueError:
@@ -54,7 +42,7 @@ def handle_user_inputs(input_text: str) -> str:
     return user_data
 
 
-def handle_initiator_email(email: str) -> str:
+def handle_email(email: str) -> str:
     while True:
         e = input(email)
         if check_email(e):
@@ -93,6 +81,17 @@ def handle_input_options(input_text):
         input_option = input(input_text)
     else:
         return input_option
+
+
+def check_phone_number(phone: str) -> bool:
+    pattern = "^\+[3][7][5]\d{9}"
+    try:
+        evaluation_result = bool(re.search(pattern, phone))
+        if not evaluation_result:
+            raise ValueError
+    except ValueError:
+        print("Требуется ввести номер в формате +375 ХХ ХХХ ХХ ХХ")
+    return evaluation_result
 
 
 def format_phone_number(n: str) -> str:

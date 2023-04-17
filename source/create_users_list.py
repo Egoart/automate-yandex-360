@@ -92,7 +92,6 @@ def generate_users_list():
 
     # slicing is used to remove service emails from list
     users_list_excl_service_emails = users_list[5:]
-    # print(users_list_excl_service_emails)
     users_to_excel(users_list_excl_service_emails)
 
 
