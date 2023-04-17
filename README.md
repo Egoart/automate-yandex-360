@@ -1,14 +1,13 @@
+# About
 This project is intended to automate email creation, updating and recording user's profiles on Yandex 360 platform.
 
 Profiles are created based on user's personal info obtained either via manual data entry or from Excel file contained strucutred user's data. Emails can be genereated in two ways: manualy (arbitrary email name) and automatically (based on user first and last names using transliteration from сyrillic to latin). Upon new profile creation the list of all excisting profiles is generated and placed in separate Excel file. The person who is initiated profile creation recieves an email message containing credentials for a new profile.
-
-# Python version 3.9.2
 
 # How to use
 
 ## Initial setup
 
-1. Install Python and packages from requirements.txt
+1. Install Python and packages from requirements.txt. Python version 3.9.2.
 2. Create `.env` file in the root directory of the project. Add to this file:
    - `BASE_URL=https://api360.yandex.net/directory/v1/org/` (base URL for script's use cases [source](https://yandex.ru/dev/api360/doc/ref/index.html))
    - `COMPANY_ID` (Company ID obtained from yandex. To get ID [authorize on Yandex](https://passport.yandex.ru/) and [register your application](https://yandex.ru/dev/api360/doc/concepts/access.html))
