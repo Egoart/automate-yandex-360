@@ -9,7 +9,7 @@ Profiles are created based on user's personal info obtained either via manual da
 
 1. Install Python and packages from requirements.txt. Python version 3.9.2.
 2. Create `.env` file in the root directory of the project. Add to this file:
-   - `BASE_URL=https://api360.yandex.net/directory/v1/org/` (base URL for script's use cases [source](https://yandex.ru/dev/api360/doc/ref/index.html))
+   - `BASE_URL=https://api360.yandex.net/directory/v1/org/` (base URL for script's use cases, [see for reference](https://yandex.ru/dev/api360/doc/ref/index.html))
    - `COMPANY_ID` (Company ID obtained from yandex. To get ID [authorize on Yandex](https://passport.yandex.ru/) and [register your application](https://yandex.ru/dev/api360/doc/concepts/access.html))
    - `TOKEN` (OAUTH secret token obtained from Yandex for your Y360 account. [About token - Yandex](https://yandex.ru/dev/id/doc/ru/concepts/ya-oauth-intro))
    - `PASSWORD` (password for newly created email address)
@@ -39,7 +39,10 @@ You may get list of all contacts without adding new user just by running `create
 * Automate password creation for new user
 * Change hardcoded department numbers in `handle_dept_input` function in `validations.py`
 * Parse data for multiple user from `email_form_v1.1.xlsx` file
+* Correct PATH to Excel files to separate them from project files
+* Timeouts for API requests
 * Password expire time function
+* Test signature settings API [ref](https://yandex.ru/dev/api360/doc/ref/MailUserSettingsService/MailUserSettingsService_SetSenderInfo.html)
 
 [^1]: Do not forget to allow SMTP usage in your mailbox settings. In Yandex its is checkbox for IMAP for some unknown reasons.
 [^2]: New user is created with `"timezone": "Europe/Minsk"`, to cvhange this edit `request_body` variable in `create_user` function in `add_new_user.py`.
