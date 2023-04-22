@@ -4,7 +4,6 @@ import logging
 from email.message import EmailMessage
 from api_utils import FROM_EMAIL as from_email
 from api_utils import SENDER_EMAIL_PASSWORD as password
-from api_utils import PASSWORD as user_temp_password
 
 
 def send_mail_to_initiator(user_data, api_user_data):
@@ -22,7 +21,7 @@ def send_mail_to_initiator(user_data, api_user_data):
                 f"По вашему запросу создан адрес электронной почты для пользователя:\n\n"
                 f"{api_user_data['last_name']} {api_user_data['first_name']} {api_user_data['middle_name']}\n\n"
                 f"Логин: {api_user_data['email']}\n"
-                f"Временный пароль: {user_temp_password}\n\n"
+                f"Временный пароль: {api_user_data['password']}\n\n"
                 f"ВНИМАНИЕ! Пароль необходимо сменить на свой персональный. Для этого, после входа в почтовый ящик, расположенный на Яндексе, нажать на изображение шестеренки, расположенное вверху справа в основном окне почты (там где список писем), далее перейти по ссылке 'Все настройки', далее перейти по ссылке 'Безопасность', далее перейти по ссылке 'менять пароль'.\n\n\n"
                 f"--\n"
                 f"С уважением,\n"
@@ -38,6 +37,7 @@ def send_mail_to_initiator(user_data, api_user_data):
             em = EmailMessage()
             em["To"] = to_email
             em["From"] = from_email
+            em["BCC"] = from_email
             em["Subject"] = subject
             em.set_content(msg)
 
