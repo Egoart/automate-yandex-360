@@ -1,4 +1,3 @@
-import random
 from secrets import choice
 import string
 
@@ -20,4 +19,5 @@ def create_password():
 
 
 if __name__ == "__main__":
-    create_password()
+    pwd = create_password()
+    print(pwd)
