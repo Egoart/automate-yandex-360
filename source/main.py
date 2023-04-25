@@ -4,7 +4,7 @@ import pprint
 import sys
 
 from add_new_user import create_user
-from create_users_list import fetch_depatments
+from departments import fetch_depatments
 from create_login import generate_named_login
 from validations import format_phone_number
 from validations import handle_dept_input
@@ -68,7 +68,9 @@ def handle_user_data():
         "Введите номер телефона в формате +375 ХХ ХХХ ХХ ХХ: "
     )
     print(f"Список подразделений предприятия:\n {pprint.pformat(department_dict)}")
-    department_id = handle_dept_input("Укажите номер подраздления из списка выше: ")
+    department_id = handle_dept_input(
+        "Укажите номер подраздления из списка выше: ", len(department_dict)
+    )
     user_data.update({"initiator_email": initiator_email})
     user_data.update({"phone": user_phone})
     user_data.update({"department_id": department_id})

@@ -6,21 +6,10 @@ from operator import add
 
 from api_utils import BASE_URL as URL
 from api_utils import api_request_headers as headers
+from departments import fetch_depatments
 
 
 URL_USERS = URL + "/users/" + "?page=1&perPage=200"
-
-URL_DEPTS = URL + "/departments/" + "?page=1&perPage=30"
-
-
-def fetch_depatments() -> dict:
-    api_response_departments = requests.get(URL_DEPTS, headers=headers)
-    dept_key_list = []
-    dept_value_list = []
-    for department in api_response_departments.json()["departments"]:
-        dept_key_list.append(department["id"])
-        dept_value_list.append(department["name"])
-    return dict(zip(dept_key_list, dept_value_list))
 
 
 def phone_from_json(user) -> str:
