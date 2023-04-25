@@ -36,9 +36,11 @@ You may get list of all contacts without adding new user just by running `create
 ## Generate password
 To generate temporarily password run `create_password.py`. Password will be printed out in a terminal.
 
+## Get department's dictionary 
+To generate dictionary containing departments names and ids, run `departments.py` file.
+
 # TO DO
 
-* Change hardcoded department numbers in `handle_dept_input` function in `validations.py`
 * Parse data for multiple user from `email_form_v1.1.xlsx` file
 * Correct PATH to Excel files to separate them from project files
 * Timeouts for API requests
