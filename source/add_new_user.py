@@ -1,8 +1,8 @@
 import datetime
 import requests
 
-from api_utils import BASE_URL
-from api_utils import api_request_headers as headers
+from utils import BASE_URL
+from utils import api_request_headers as headers
 
 from create_password import create_password
 

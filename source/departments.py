@@ -1,7 +1,7 @@
 import requests
 
-from api_utils import BASE_URL as URL
-from api_utils import api_request_headers as headers
+from utils import BASE_URL as URL
+from utils import api_request_headers as headers
 
 URL_DEPTS = URL + "/departments/" + "?page=1&perPage=30"
 

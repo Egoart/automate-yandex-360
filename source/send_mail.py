@@ -2,8 +2,8 @@ import smtplib
 import logging
 
 from email.message import EmailMessage
-from api_utils import FROM_EMAIL as from_email
-from api_utils import SENDER_EMAIL_PASSWORD as password
+from utils import FROM_EMAIL as from_email
+from utils import SENDER_EMAIL_PASSWORD as password
 
 
 def send_mail_to_initiator(user_data, api_user_data):

@@ -127,3 +127,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+#The folder containing Excel files, specific to the project
+data_files/
