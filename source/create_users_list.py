@@ -1,26 +1,18 @@
+import os
 import requests
 import xlsxwriter
 from functools import reduce
 from operator import add
 
 
-from api_utils import BASE_URL as URL
-from api_utils import api_request_headers as headers
+from pathlib import Path
+from utils import BASE_URL as URL
+from utils import api_request_headers as headers
+from utils import get_or_create_file_path
+from departments import fetch_depatments
 
 
 URL_USERS = URL + "/users/" + "?page=1&perPage=200"
-
-URL_DEPTS = URL + "/departments/" + "?page=1&perPage=30"
-
-
-def fetch_depatments() -> dict:
-    api_response_departments = requests.get(URL_DEPTS, headers=headers)
-    dept_key_list = []
-    dept_value_list = []
-    for department in api_response_departments.json()["departments"]:
-        dept_key_list.append(department["id"])
-        dept_value_list.append(department["name"])
-    return dict(zip(dept_key_list, dept_value_list))
 
 
 def phone_from_json(user) -> str:
@@ -49,7 +41,8 @@ def users_to_excel(users_list):
     ]
 
     # create Excel file and worksheet
-    file_name = "emails_list.xlsx"
+    file_name = get_or_create_file_path("emails_list.xlsx")
+
     workbook = xlsxwriter.Workbook(file_name)
     worksheet = workbook.add_worksheet()
     # format first row with bold characters

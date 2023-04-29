@@ -1,7 +1,7 @@
 import requests
 
 from add_new_user import BASE_URL
-from api_utils import api_request_headers as headers
+from utils import api_request_headers as headers
 from validations import handle_email
 from validations import handle_phone_input
 

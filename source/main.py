@@ -1,10 +1,10 @@
 import openpyxl
-import pathlib
+import os
 import pprint
 import sys
 
 from add_new_user import create_user
-from create_users_list import fetch_depatments
+from departments import fetch_depatments
 from create_login import generate_named_login
 from validations import format_phone_number
 from validations import handle_dept_input
@@ -13,6 +13,7 @@ from validations import handle_input_options
 from validations import handle_login
 from validations import handle_phone_input
 from validations import handle_user_inputs
+from utils import get_or_create_file_path
 
 DATA_FILE = "email_form_v1.1.xlsx"
 
@@ -20,16 +21,16 @@ department_dict = fetch_depatments()
 
 
 def main():
-    data_file = pathlib.Path(DATA_FILE)
-    if data_file.exists():
+    data_file_path = get_or_create_file_path(DATA_FILE)
+    if os.path.exists(data_file_path):
         print("Обнаружен файл с данными")
-        handle_data_file()
+        handle_data_file(data_file_path)
     else:
         handle_user_data()
 
 
-def handle_data_file():
-    wb = openpyxl.load_workbook(DATA_FILE)
+def handle_data_file(file_path):
+    wb = openpyxl.load_workbook(file_path)
     ws = wb.active
     get_dept_key_by_value = [
         key for key, value in department_dict.items() if value == ws["F4"].value
@@ -68,7 +69,9 @@ def handle_user_data():
         "Введите номер телефона в формате +375 ХХ ХХХ ХХ ХХ: "
     )
     print(f"Список подразделений предприятия:\n {pprint.pformat(department_dict)}")
-    department_id = handle_dept_input("Укажите номер подраздления из списка выше: ")
+    department_id = handle_dept_input(
+        "Укажите номер подраздления из списка выше: ", len(department_dict)
+    )
     user_data.update({"initiator_email": initiator_email})
     user_data.update({"phone": user_phone})
     user_data.update({"department_id": department_id})

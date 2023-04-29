@@ -58,15 +58,16 @@ def handle_login(login_input) -> str:
     return l.lower()
 
 
-def handle_dept_input(dept_input):
+def handle_dept_input(dept_input, dept_len):
     while True:
         v = int(input(dept_input))
-        if isinstance(v, int) and (v in range(1, 18)):
+        if isinstance(v, int) and (v in range(1, dept_len)):
             break
         else:
             print(
                 (
                     f"Используйте числовую клавиатуру для ввода номера подразделения.\n"
+                    f"Вводите число в диапазоне от 1 до {dept_len}.\n"
                     f"Номера подразделений в списке выше, левая колонка"
                 )
             )

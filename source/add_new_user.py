@@ -1,9 +1,10 @@
 import datetime
 import requests
 
-from api_utils import BASE_URL
-from api_utils import PASSWORD
-from api_utils import api_request_headers as headers
+from utils import BASE_URL
+from utils import api_request_headers as headers
+
+from create_password import create_password
 
 from create_users_list import generate_users_list
 from send_mail import send_mail_to_initiator
@@ -37,7 +38,7 @@ def create_user(user_data):
             "middle": user_data.get("middle_name"),
         },
         "nickname": user_data.get("login"),
-        "password": PASSWORD,
+        "password": create_password(),
         "position": user_data.get("position"),
         "timezone": "Europe/Minsk",
         "contacts": [{"type": "phone", "value": user_data.get("phone")}],
@@ -60,6 +61,7 @@ def create_user(user_data):
                 api_response.json()["createdAt"],
                 api_response.json()["updatedAt"],
             ],
+            "password": request_body["password"],
         }
         send_mail_to_initiator(user_data, api_user_data)
         print(
