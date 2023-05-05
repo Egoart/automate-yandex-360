@@ -42,12 +42,11 @@ To generate dictionary containing departments names and ids, run `departments.py
 # TO DO
 
 * Parse data for multiple user from `email_form_v1.1.xlsx` file
-* Timeouts for API requests
 * Password expire time function
 * Test signature settings API [ref](https://yandex.ru/dev/api360/doc/ref/MailUserSettingsService/MailUserSettingsService_SetSenderInfo.html)
 
 [^1]: Do not forget to allow SMTP usage in your mailbox settings. In Yandex its is checkbox for IMAP for some unknown reasons.
-[^2]: New user is created with `"timezone": "Europe/Minsk"`, to cvhange this edit `request_body` variable in `create_user` function in `add_new_user.py`.
+[^2]: New user is created with `"timezone": "Europe/Minsk"`, to change this edit `request_body` variable in `create_user` function in `add_new_user.py`.
 [^3]: Do not forget to change the text of the email confirmation message and signature in `send_message.py` variable `msg`.
 [^4]: Note that phone number is validated against `+375` phone code and `XX XXX XX XX` phone format. To change this, edit `check_phone_number` and `format_phone_number` in `validations.py`.
 [^5]: Please note that list in `emails_list.xlsx` do not contain some service emails and administrator email as they are intentionally cut off. To change number of listed emails, edit slicing argument in declaration of users_list_excl_service_emails variable in `create_users_list.py`.

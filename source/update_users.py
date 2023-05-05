@@ -2,6 +2,7 @@ import requests
 
 from add_new_user import BASE_URL
 from utils import api_request_headers as headers
+from utils import timeout
 from validations import handle_email
 from validations import handle_phone_input
 
@@ -31,7 +32,6 @@ def obtain_user_data() -> dict:
 
 
 def update_user_contact_info():
-
     api_response = requests.get(URL_USERS, headers=headers)
 
     users_dict_list = [
@@ -59,7 +59,9 @@ def update_user_contact_info():
                     }
                 ]
             }
-            r = requests.put(URL_USER_ID, headers=headers, json=request_body)
+            r = requests.put(
+                URL_USER_ID, headers=headers, json=request_body, timeout=timeout
+            )
             print(f"Для пользователя {user} ответ сервера {r.json()}")
 
 
