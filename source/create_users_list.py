@@ -1,5 +1,4 @@
 import requests
-from requests.exceptions import ConnectTimeout
 import xlsxwriter
 from functools import reduce
 from operator import add

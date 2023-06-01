@@ -34,10 +34,13 @@ If you'd like to add or update phone number in existing user's contact info, run
 You may get list of all contacts without adding new user just by running `create_users_list.py` from `source` folder. As a result Excel file `emails_list.xlsx` in the `data_files` directory will be generated. To update this file run again `create_users_list.py`. It is not necessary to delete Excel file previously created[^5].
 
 ## Generate password
-To generate temporarily password run `create_password.py`. Password will be printed out in a terminal.
+To generate temporary password run `create_password.py`. Password will be printed out in a terminal.
 
 ## Get department's dictionary 
 To generate dictionary containing departments names and ids, run `departments.py` file.
+
+## Generate email login from first and last names of user
+To generate email login from user's name and surname, run `create_login.py` file and fill in input prompts.
 
 # TO DO
 
