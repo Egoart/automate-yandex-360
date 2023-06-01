@@ -1,4 +1,9 @@
 import re
+from pydantic import BaseModel, ValidationError, validator
+
+
+class UserModel(BaseModel):
+    pass
 
 
 def check_cyrillic(name: str) -> bool:

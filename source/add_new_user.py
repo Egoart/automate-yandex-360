@@ -3,6 +3,7 @@ import requests
 
 from utils import BASE_URL
 from utils import api_request_headers as headers
+from utils import timeout
 
 from create_password import create_password
 
@@ -43,7 +44,9 @@ def create_user(user_data):
         "timezone": "Europe/Minsk",
         "contacts": [{"type": "phone", "value": user_data.get("phone")}],
     }
-    api_response = requests.post(URL, headers=headers, json=request_body)
+    api_response = requests.post(
+        URL, headers=headers, json=request_body, timeout=timeout
+    )
 
     if api_response.status_code != 200:
         message = api_response.json()["message"]

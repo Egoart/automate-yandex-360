@@ -17,6 +17,8 @@ BASE_URL = YANDEX_BASE_URL + COMPANY_ID
 
 api_request_headers = {"Authorization": "OAuth " + TOKEN}
 
+timeout = 2
+
 
 def get_or_create_file_path(file_name):
     cdw = Path(__file__).absolute().parent

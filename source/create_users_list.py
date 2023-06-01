@@ -1,14 +1,13 @@
-import os
 import requests
 import xlsxwriter
 from functools import reduce
 from operator import add
 
 
-from pathlib import Path
 from utils import BASE_URL as URL
 from utils import api_request_headers as headers
 from utils import get_or_create_file_path
+from utils import timeout
 from departments import fetch_depatments
 
 
@@ -68,7 +67,7 @@ def users_to_excel(users_list):
 
 
 def generate_users_list():
-    api_response = requests.get(URL_USERS, headers=headers)
+    api_response = requests.get(URL_USERS, headers=headers, timeout=timeout)
     department_dict = fetch_depatments()
     users_list = [
         [
