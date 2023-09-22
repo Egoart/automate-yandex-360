@@ -3,7 +3,7 @@ import logging
 
 from email.message import EmailMessage
 from utils import FROM_EMAIL as from_email
-from utils import SENDER_EMAIL_PASSWORD as password
+from utils import YANDEX_APP_PASSWORD as password
 
 
 def send_mail_to_initiator(user_data, api_user_data):
@@ -23,9 +23,10 @@ def send_mail_to_initiator(user_data, api_user_data):
                 f"Логин: {api_user_data['email']}\n"
                 f"Временный пароль: {api_user_data['password']}\n\n"
                 f"ВНИМАНИЕ! Пароль необходимо сменить на свой персональный. Для этого, после входа в почтовый ящик, расположенный на Яндексе, нажать на изображение шестеренки, расположенное вверху справа в основном окне почты (там где список писем), далее перейти по ссылке 'Все настройки', далее перейти по ссылке 'Безопасность', далее перейти по ссылке 'менять пароль'.\n\n\n"
+                f"Настоятельно рекомендую включить двуфакторную аутентификацию! Для этого зайдите в яндекс почту через браузер, кликните по иконке с аватаром в верхнем правом углу, в выпадающем списке кликните по ссылке 'управление аккаунтом' https://passport.yandex.by/? на загрузившейся странице в разделе 'Данные' кликните по ссылке 'Мои контакты' https://passport.yandex.by/personal/contacts и введите свой номер телефона. Для подтверждения номера вы получите смс. После подтверждения вновь перейдите в раздел 'Мои контакты' далее 'Основной телефон', в появившемся окне активируйте переключатель 'Входить с паролем и смс', введите полученный код. Настройка завершена. На почту придет письмо с дополнительными рекомендациями по повышению защищенности вашего аккаунта.'.\n\n\n"
                 f"--\n"
                 f"С уважением,\n"
-                f"Егор Черявяковский\n"
+                f"Егор Червяковский\n"
                 f"+375 44 510 37 44\n"
                 f"ООО 'Научно-производственный центр БелАгроГен'\n"
                 f"223053, Минский р-н,\n"
@@ -43,6 +44,10 @@ def send_mail_to_initiator(user_data, api_user_data):
 
             # Send the email
             s.send_message(em)
+            print("Email was sent.")
 
-    except smtplib.SMTPException as err:
-        logging.error("Сообщение не было отправлено", err)
+    except smtplib.SMTPResponseException as err:
+        # logging.error("Сообщение не было отправлено", err)
+        error_code = err.smtp_code
+        error_message = err.smtp_error
+        print(f"{error_message} -- {error_code}")

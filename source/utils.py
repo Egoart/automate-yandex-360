@@ -11,13 +11,14 @@ PASSWORD = os.getenv("PASSWORD")
 YANDEX_BASE_URL = os.getenv("BASE_URL")
 FROM_EMAIL = os.getenv("EMAIL")
 SENDER_EMAIL_PASSWORD = os.getenv("SENDER_EMAIL_PASSWORD")
+YANDEX_APP_PASSWORD = os.getenv("YANDEX_APP_PASSWORD")
 
 
 BASE_URL = YANDEX_BASE_URL + COMPANY_ID
 
 api_request_headers = {"Authorization": "OAuth " + TOKEN}
 
-timeout = 2
+timeout = 5
 
 
 def get_or_create_file_path(file_name):
