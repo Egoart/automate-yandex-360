@@ -68,10 +68,12 @@ def create_user(user_data):
         }
         send_mail_to_initiator(user_data, api_user_data)
         print(
+            f"\n"
             f"Добавлен новый контакт: {api_user_data['last_name']} "
             f"{api_user_data['first_name']} "
             f"{api_user_data['middle_name']}, "
             f"{api_user_data['position'].lower()}"
+            f"\n"
         )
         print(api_user_data["email"])
         formatted_dates = handle_timestamp(api_user_data["timestamps_list"])
