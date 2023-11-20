@@ -13,6 +13,7 @@ from validations import handle_input_options
 from validations import handle_login
 from validations import handle_phone_input
 from validations import handle_user_inputs
+from validations import positive_replies, negative_replies
 from utils import get_or_create_file_path
 
 DATA_FILE = "email_form_v1.1.xlsx"
@@ -89,10 +90,10 @@ def choose_login_type_confirm_create_email(user_data):
 
 
 def handle_login_type(last_name: str, first_name: str) -> dict:
-    login_type = handle_input_options("Cоздать произвольный login? да/нет: ")
-    if login_type == "да":
+    login_type = handle_input_options("Cоздать произвольный login? да/нет (y/n): ")
+    if login_type.lower() in positive_replies:
         user_login = handle_login("Введите login латинскими буквами: ")
-    elif login_type == "нет":
+    elif login_type.lower() in negative_replies:
         user_login = generate_named_login(last_name, first_name)
     return {"login": user_login.lower()}
 
@@ -101,10 +102,10 @@ def confirm_user_data(user_data):
     print(
         f"Будет создан пользователь со следующими параметрами:\n {pprint.pformat(user_data)}"
     )
-    answer_type = handle_input_options("Данные верны, продолжить? да/нет:")
-    if answer_type == "да":
+    answer_type = handle_input_options("Данные верны, продолжить? да/нет (y/n):")
+    if answer_type.lower() in positive_replies:
         print("Данные используются для создания почтового ящика...")
-    elif answer_type == "нет":
+    elif answer_type.lower() in negative_replies:
         print(
             "Создание почтового ящика прервано. Перезапустите скрипт еще раз и введите корректные данные."
         )

@@ -2,6 +2,10 @@ import re
 from pydantic import BaseModel, ValidationError, validator
 
 
+positive_replies = ["да", "y", "yes"]
+negative_replies = ["нет", "n", "no"]
+
+
 class UserModel(BaseModel):
     pass
 
@@ -80,10 +84,10 @@ def handle_dept_input(dept_input, dept_len):
 
 
 def handle_input_options(input_text):
-    INPUT_OPTIONS = ["да", "нет"]
+    INPUT_OPTIONS = positive_replies + negative_replies
     input_option = input(input_text)
     while input_option not in INPUT_OPTIONS:
-        print("Введите либо 'да', либо 'нет'")
+        print("Введите 'да' или 'нет', либо 'y' или 'n'")
         input_option = input(input_text)
     else:
         return input_option
