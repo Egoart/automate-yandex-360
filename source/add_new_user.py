@@ -43,6 +43,7 @@ def create_user(user_data):
         "position": user_data.get("position"),
         "timezone": "Europe/Minsk",
         "contacts": [{"type": "phone", "value": user_data.get("phone")}],
+        "passwordChangeRequired": True,
     }
     api_response = requests.post(
         URL, headers=headers, json=request_body, timeout=timeout

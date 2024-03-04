@@ -18,4 +18,5 @@ def fetch_depatments() -> dict:
 
 
 if __name__ == "__main__":
-    fetch_depatments()
+    dept_list = fetch_depatments()
+    print(dept_list)

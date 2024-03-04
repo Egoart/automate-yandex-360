@@ -16,7 +16,7 @@ from validations import handle_user_inputs
 from validations import positive_replies, negative_replies
 from utils import get_or_create_file_path
 
-DATA_FILE = "email_form_v1.1.xlsx"
+DATA_FILE = "email_form_v1.2.xlsx"
 
 department_dict = fetch_depatments()
 
@@ -100,7 +100,7 @@ def handle_login_type(last_name: str, first_name: str) -> dict:
 
 def confirm_user_data(user_data):
     print(
-        f"Будет создан пользователь со следующими параметрами:\n {pprint.pformat(user_data)}"
+        f"Будет создан пользователь со следующими параметрами:\n {pprint.pformat(user_data, sort_dicts=False)}"
     )
     answer_type = handle_input_options("Данные верны, продолжить? да/нет (y/n):")
     if answer_type.lower() in positive_replies:
